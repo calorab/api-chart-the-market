@@ -3,6 +3,7 @@ const router = express.Router()
 
 const findController = require('../Controllers/findController')
 
+
 // GET /chartData
 router.get('/chartData', findController.getChartData)
 

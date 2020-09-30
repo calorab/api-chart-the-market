@@ -2,7 +2,7 @@
   "name": "api-chart-the-market-thinkful",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
     "test": "mocha --require test/setup.js",
     "dev": "nodemon src/server.js",
@@ -20,6 +20,7 @@
     "express": "^4.17.1",
     "helmet": "^3.22.0",
     "morgan": "^1.10.0",
+    "node": "^14.13.0",
     "winston": "^3.2.1"
   },
   "devDependencies": {
