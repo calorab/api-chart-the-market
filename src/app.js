@@ -41,9 +41,10 @@ app.use(function validateBearerToken(req, res, next) {
   if (!authToken || authToken.split(' ')[1] !== apiToken) {
     logger.error(`Unauthorized request to path: ${req.path}`);
   }
-  // move to the next middleware
   next()
 })
+
+app.use('/find', findRoute)
 
 app.use(function errorHandler(error, req, res, next) {
   let response
