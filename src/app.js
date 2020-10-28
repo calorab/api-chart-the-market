@@ -7,6 +7,8 @@ const {NODE_ENV} = require('./config');
 const winston = require('winston');
 
 const findRoute = require('./Routes/findRoute')
+const authRoute = require('./Routes/authRoute')
+const portfolioRoute = require('./Routes/portfolioRoute')
 
 const app =  express();
 
@@ -45,7 +47,9 @@ app.use(function validateBearerToken(req, res, next) {
   next()
 })
 
-app.use('/find', findRoute)
+// app.use('/search', findRoute)
+// app.use('/auth', authRoute)
+app.use('/portfolio', portfolioRoute)
 
 app.use(function errorHandler(error, req, res, next) {
   let response
