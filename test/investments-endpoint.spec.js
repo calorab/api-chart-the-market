@@ -20,7 +20,7 @@ before('clean the table', () => db('investments').truncate())
 
 afterEach('cleanup', () => db('investments').truncate())
 
-describe('GET /investment/investment_id', function() {
+describe('GET /investment/investment-id', function() {
 
     context(`Given no investments`, () => {
         it(`responds with 404`, () => {
@@ -40,7 +40,7 @@ describe('GET /investment/investment_id', function() {
                 .insert(testInvestments)
         })
 
-        it('GET /portfolio/investment/investment_Id responds with 200 and the specified investment', () => {
+        it('GET /portfolio/investment/investment-id responds with 200 and the specified investment', () => {
             const investmentId = 2
             const expectedInvestment = testInvestments[investmentId - 1]
             return supertest(app)
@@ -130,7 +130,7 @@ describe(`POST /investment`, () => {
     })
 })
 
-describe.only(`DELETE /deleteinvestment/:investment_id`, () => {
+describe.only(`DELETE /delete-investment/:investment-id`, () => {
     context('Given there are investments in the database', () => {
         const testinvestments = makeInvestmentArray()
 
@@ -144,7 +144,7 @@ describe.only(`DELETE /deleteinvestment/:investment_id`, () => {
         const idToRemove = 2
         const expectedInvestments = testinvestments.filter(investment => investment.id !== idToRemove)
         return supertest(app)
-            .delete(`/deleteinvestment/${idToRemove}`)
+            .delete(`/delete-investment/${idToRemove}`)
             .expect(204)
             .then(res =>
             supertest(app)
@@ -158,7 +158,7 @@ describe.only(`DELETE /deleteinvestment/:investment_id`, () => {
         it(`responds with 404`, () => {
             const investmentId = 123456
             return supertest(app)
-                .delete(`/deleteinvestment/${investmentId}`)
+                .delete(`/delete-investment/${investmentId}`)
                 .expect(404, { error: { message: `Investment doesn't exist` } })
             })
     })

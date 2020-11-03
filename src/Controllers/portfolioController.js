@@ -11,7 +11,7 @@ exports.getInvestments = (req, res, next) => {
 
 exports.getInvestmentById = (req, res, next) => {
     const knexInstance = req.app.get('db') 
-    InvestmentServices.getById(knexInstance, req.params.investment_id)
+    InvestmentServices.getById(knexInstance, req.params.investment-id)
     .then(investment => {
         if (!investment) {
             return res.status(404).json({
@@ -50,7 +50,7 @@ exports.deleteInvestments = (req, res, next) => {
     const knexInstance = req.app.get('db')
     InvestmentServices.deleteInvestment(
         knexInstance, 
-        req.params.investment_id
+        req.params.investment-id
     )
     .then(investment => {
         if (!investment) {

@@ -7,10 +7,10 @@ const portfolioController = require('../Controllers/portfolioController')
 // GET portfolio/investments
 router.get('/investments', portfolioController.getInvestments)
 
-router.get('/investment/:investment_id', portfolioController.getInvestmentById)
+router.get('/investment/:investment-id', portfolioController.getInvestmentById)
 
 router.post('/investment', jsonParser, portfolioController.postInvestment)
 
-router.delete('/deleteinvestment/:investment_id', portfolioController.deleteInvestments)
+router.delete('/delete-investment/:investment-id', portfolioController.deleteInvestments)
 
 module.exports = router
