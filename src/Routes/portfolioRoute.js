@@ -11,4 +11,6 @@ router.get('/investment/:investment_id', portfolioController.getInvestmentById)
 
 router.post('/investment', jsonParser, portfolioController.postInvestment)
 
+router.delete('/deleteinvestment/:investment_id', portfolioController.deleteInvestments)
+
 module.exports = router
