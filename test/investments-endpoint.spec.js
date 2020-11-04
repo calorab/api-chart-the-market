@@ -130,7 +130,8 @@ describe(`POST /investment`, () => {
     })
 })
 
-describe.only(`DELETE /delete-investment/:investment-id`, () => {
+// STILL NEEDS TESTING CALEB
+describe(`DELETE /delete-investment/:investment-id`, () => {
     context('Given there are investments in the database', () => {
         const testinvestments = makeInvestmentArray()
 
@@ -144,11 +145,11 @@ describe.only(`DELETE /delete-investment/:investment-id`, () => {
         const idToRemove = 2
         const expectedInvestments = testinvestments.filter(investment => investment.id !== idToRemove)
         return supertest(app)
-            .delete(`/delete-investment/${idToRemove}`)
+            .delete(`/portfolio/delete-investment/${idToRemove}`)
             .expect(204)
             .then(res =>
             supertest(app)
-                .get(`/investments`)
+                .get(`portfolio/investments`)
                 .expect(expectedInvestments)
             )
         })
@@ -158,9 +159,9 @@ describe.only(`DELETE /delete-investment/:investment-id`, () => {
         it(`responds with 404`, () => {
             const investmentId = 123456
             return supertest(app)
-                .delete(`/delete-investment/${investmentId}`)
+                .delete(`/portfolio/delete-investment/${investmentId}`)
                 .expect(404, { error: { message: `Investment doesn't exist` } })
-            })
+        })
     })
 })
     
