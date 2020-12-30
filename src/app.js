@@ -47,9 +47,7 @@ app.use(function validateBearerToken(req, res, next) {
   next()
 })
 
-// app.use('/search', findRoute)
-// app.use('/auth', authRoute)
-app.use('/portfolio', portfolioRoute)
+app.use('/search', findRoute)
 
 app.use(function errorHandler(error, req, res, next) {
   let response
