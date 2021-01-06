@@ -27,3 +27,4 @@ When your new project is ready for deployment, add a new Heroku application with
 
 ## Seeds investments table in chart_the_market DB 
 psql -U postgres -d chart_the_market -f ./seeds/seed.investments.sql 
+

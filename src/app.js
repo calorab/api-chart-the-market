@@ -6,9 +6,7 @@ const helmet = require('helmet');
 const {NODE_ENV} = require('./config');
 const winston = require('winston');
 
-const findRoute = require('./Routes/findRoute')
-const authRoute = require('./Routes/authRoute')
-const portfolioRoute = require('./Routes/portfolioRoute')
+const findRoute = require('./Routes/symbolRoute')
 
 const app =  express();
 
@@ -47,7 +45,8 @@ app.use(function validateBearerToken(req, res, next) {
   next()
 })
 
-app.use('/search', findRoute)
+app.use('/symbol', symbolRoute)
+app.use('/chartdata', chartRoute)
 
 app.use(function errorHandler(error, req, res, next) {
   let response
