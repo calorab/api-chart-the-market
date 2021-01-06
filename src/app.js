@@ -6,7 +6,8 @@ const helmet = require('helmet');
 const {NODE_ENV} = require('./config');
 const winston = require('winston');
 
-const findRoute = require('./Routes/symbolRoute')
+const symbolRoute = require('./Routes/symbolRoute')
+const chartRoute = require('./Routes/chartRoute')
 
 const app =  express();
 

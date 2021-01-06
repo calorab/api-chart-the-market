@@ -5,10 +5,10 @@ exports.getChartData = (req, res, next) => {
     res.send('Chart Data: Success!!!')
 }
 
-exports.GetSMAData = (res,req,next) => {
-
+exports.GetSMAData = (req, res, next) => {
+    res.send('SMA Data: Success!!!')
 }
 
-exports.GetEMAData = (res,req,next) => {
-    
-}
+exports.GetEMAData = (req, res, next) => {
+    res.send('EMA Data: Success!!!')
+} 
