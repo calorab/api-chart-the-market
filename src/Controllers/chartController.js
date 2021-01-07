@@ -16,8 +16,19 @@ exports.getChartData = (req, res, next) => {
 }
 
 exports.GetSMAData = (req, res, next) => {
-
-    res.send('SMA Data: Success!!!')
+    // let stockSymbol = req.query.symbol
+    // let interval = req.query.interval
+    // console.log('params: ', stockSymbol)
+    // axios.get(AV_API_URL_BASE + 'function=SMA' + '&symbol=' + stockSymbol + '&interval=' + interval + '&apikey=' + AV_API_KEY )
+    //     .then(response => {
+    //         console.log('Response in CD: ', response.data)
+    //         res.send(response.data)
+    //     })
+    //     .catch(err => {
+    //         console.log('THE ERROR: ', err)
+    //         next();
+    //     })
+    // res.send('SMA Data: Success!!!')
 }
 
 exports.GetEMAData = (req, res, next) => {
