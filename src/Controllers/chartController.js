@@ -55,13 +55,7 @@ exports.GetMACDData = (req, res, next) => {
     console.log('params: ', stockSymbol, interval)
     axios.get(AV_API_URL_BASE + 'function=MACD' + '&symbol=' + stockSymbol + '&interval=' + interval + '&series_type=close' + '&apikey=' + AV_API_KEY )
         .then(response => {
-            let parsedData = response.data["Technical Analysis: MACD"]["2021-01-11"]
-            console.log(parsedData)
-            // let skinnyData
-            // for (let i = 0; i < response.datalength && i < 100; i++) {
-
-            // }
-            res.send(parsedData)
+            res.send(response.data)
         })
         .catch(err => {
             console.log('THE ERROR: ', err)
