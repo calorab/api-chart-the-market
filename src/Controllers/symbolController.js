@@ -2,6 +2,7 @@ const axios = require('axios')
 const {AV_API_KEY, AV_API_URL_BASE} = require('../config')
 
 exports.getStockSymbol = (req, res, next) => {
+    console.log(req.query)
     let keyword = req.query.keyword
     if (!keyword) {
         throw new Error('No symbol requested')
