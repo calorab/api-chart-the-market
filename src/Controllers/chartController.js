@@ -10,7 +10,7 @@ exports.getChartData = (req, res, next) => {
     }
     axios.get(AV_API_URL_BASE + interval + '&symbol=' + stockSymbol + '&apikey=' + AV_API_KEY )
         .then(response => {
-            res.json(response.data);
+            res.json(response.data );
         })
         .catch(err => {
             console.log('THE ERROR: ', err)

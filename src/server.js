@@ -1,13 +1,15 @@
-const app = require('./app')
-const { PORT, DB_URL } = require('./config')
-const knex = require('knex')
+const app = require('./app');
+const {PORT, DB_URL} = require('./config');
+const mongoose = require('mongoose');
 
-const db = knex({
-    client: 'pg',
-    connection: DB_URL,
+mongoose.connect(DB_URL, err => {
+    if (err) {
+        console.log('LOG: ', err);
+        errorHandler(err);
+    }
 })
 
-app.set('db', db)
+// app.set('db', db)
 
 app.listen(PORT, () => {
     console.log(`Server is listening on http://localhost:${PORT}`)
