@@ -5,11 +5,12 @@ const cors = require('cors');
 const helmet = require('helmet');
 const {NODE_ENV} = require('./config');
 const winston = require('winston');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
 const symbolRoute = require('./Routes/symbolRoute');
 const chartRoute = require('./Routes/chartRoute');
 const investmentRoute = require('./Routes/investmentRoute');
+const userRoute = require('./Routes/userRoute');
 
 const app =  express();
 
@@ -48,12 +49,10 @@ if (NODE_ENV !== 'production') {
 //   next()
 // })
 
-// DB connection string password = Drummer1!;             Db = chartthemarketDB
-// mongodb+srv://admin:Drummer1!@cluster0.6akq9.mongodb.net/chartthemarketDB?retryWrites=true&w=majority
-
 app.use('/symbol', symbolRoute)
 app.use('/chartdata', chartRoute)
 app.use('/myinvestments', investmentRoute)
+app.use('/user', userRoute)
 
 app.use(function errorHandler(error, req, res, next) {
   let response
