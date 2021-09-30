@@ -5,7 +5,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const {NODE_ENV} = require('./config');
 const winston = require('winston');
-// const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const symbolRoute = require('./Routes/symbolRoute');
 const chartRoute = require('./Routes/chartRoute');
@@ -19,6 +19,7 @@ const morganOption = (NODE_ENV === 'production') ? 'tiny' : 'common';
 app.use(morgan(morganOption));
 app.use(helmet());
 app.use(cors());
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
   res.send('Hello, world!')
