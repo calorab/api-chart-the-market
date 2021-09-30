@@ -5,11 +5,39 @@ const User = require('../Models/user');
 
 
 exports.getUser = (req, res, next) => {
+    const email = req.body.email;
+    const password = req.body.password;
+    let loadedUser;
+    User
+        .findOne({email: email})
+        .then(user => {
+            if (!user) {
+                throw new Error('No user with that email found!');
+            } 
+            loadedUser = user;
+            return bcrypt.compare(password, user.password); 
+        })
+        .then(isEqual => {
+            if (!isEqual) {
+                res.status(403).json({message: 'Password is incorrect.'});
+            }
+            const token = jwt.sign(
+                {
+                email: loadedUser.email,
+                userId: loadedUser._id.toString()
+                },
+                'worththepennyiamwritingthisonjack'
+            );
+            res.status(200).json({token: token, userId: loadedUser._id.toString()});
+        })
+        .catch(err => {
+            console.log('the error: ', err);
+            next(err);
+        });
 }
 
 
 exports.registerUser = (req, res, next) => {
-    console.log(req.body)
     const email = req.body.email;
     User
         .findOne({email: email})
