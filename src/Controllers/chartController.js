@@ -1,8 +1,7 @@
-const axios = require('axios')
-const {AV_API_KEY, AV_API_URL_BASE} = require('../config')
+const axios = require('axios');
+const {AV_API_KEY, AV_API_URL_BASE} = require('../config');
 
 exports.getChartData = (req, res, next) => {
-    // console.log('REQUEST :::::: ', req.query);
     let stockSymbol = req.query.symbol
     let interval = "function=TIME_SERIES_DAILY_ADJUSTED"; //function=TIME_SERIES_WEEKLY_ADJUSTED
     if (req.query.interval === 'weekly') {

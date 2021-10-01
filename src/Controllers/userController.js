@@ -6,7 +6,7 @@ const User = require('../Models/user');
 
 exports.getUser = (req, res, next) => {
     const email = req.body.email;
-    const password = req.body.password;
+    const password = req.body.password; 
     let loadedUser;
     User
         .findOne({email: email})
