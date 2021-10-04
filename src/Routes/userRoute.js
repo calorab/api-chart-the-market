@@ -7,5 +7,5 @@ router.post('/signin', userController.getUser)
 
 // POST route to register as a new User
 router.post('/register', userController.registerUser)
-
+ 
 module.exports = router

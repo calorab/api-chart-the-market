@@ -3,7 +3,7 @@ const express = require('express')
 const router = express.Router()
 
 //GET all investment data @ /myinvestments
-router.get('/', InvestmentController.getInvestmentData)
+router.post('/', InvestmentController.getInvestmentData)
 
 //POST an investment @ /myinvestments
 router.post('/add', InvestmentController.postInvestment)

@@ -3,10 +3,20 @@ const Investment = require('../Models/investment')
 const User = require('../Models/user')
 
 exports.getInvestmentData = (req, res) => {
-    console.log("Got to getInvestmentData!!!") // check-a-roonie
-    res.send('Your Data...');
+    console.log('req.body object: ', req.body);
+    const userId = req.userId;
+    Investment
+        .find({user: userId})
+        .then(result => {
+            res.status(200).json(result);
+        })
+        .catch(err => {
+            console.log(err);
+            next(err);
+        });
+
 }
-// NEEDS TESTING
+
 exports.postInvestment = (req, res, next) => {
     const investment = new Investment({
         equity: req.body.symbol,
@@ -21,7 +31,8 @@ exports.postInvestment = (req, res, next) => {
         .then(result => {
             return User.findById(req.body.userId)
         }).then(user => {
-            user.investment.push(investment);
+            console.log('The User: ', user)
+            user.investments.push(investment);
             return user.save();
         })
         .then(result => {
