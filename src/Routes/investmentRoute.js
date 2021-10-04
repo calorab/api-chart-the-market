@@ -8,4 +8,7 @@ router.post('/', InvestmentController.getInvestmentData)
 //POST an investment @ /myinvestments
 router.post('/add', InvestmentController.postInvestment)
 
+// DELETE (sell) an investment /myinvestments
+// router.delete('/sell', InvestmentController.deleteInvestment);
+
 module.exports = router

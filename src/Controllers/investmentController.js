@@ -4,11 +4,12 @@ const User = require('../Models/user')
 
 exports.getInvestmentData = (req, res) => {
     console.log('req.body object: ', req.body);
-    const userId = req.userId;
+    const userId = req.body.userId;
     Investment
         .find({user: userId})
-        .then(result => {
-            res.status(200).json(result);
+        .then(userData => {
+            console.log('Investment Array: ', userData)
+            res.json(userData);
         })
         .catch(err => {
             console.log(err);
