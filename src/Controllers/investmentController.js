@@ -1,15 +1,17 @@
 const axios = require('axios');
 const Investment = require('../Models/investment')
 const User = require('../Models/user')
+// const {AV_API_KEY, AV_API_URL_BASE} = require('../config');
+// const getLatestPrice = require('../Middleware/getLatestPrice');
 
 exports.getInvestmentData = (req, res) => {
     console.log('req.body object: ', req.body);
     const userId = req.body.userId;
     Investment
         .find({user: userId})
-        .then(userData => {
-            console.log('Investment Array: ', userData)
-            res.json(userData);
+        .then(investmentData => {
+            console.log('investment data1: ', investmentData);
+            res.json(investmentData);
         })
         .catch(err => {
             console.log(err);
@@ -44,4 +46,8 @@ exports.postInvestment = (req, res, next) => {
             next(err);
         });
 
+}
+
+exports.deleteInvestment = (req, res, next) => {
+    console.log('inside deleteInvestments controiller!');
 }
