@@ -11,4 +11,7 @@ router.post('/add', InvestmentController.postInvestment)
 // DELETE (sell) an investment /myinvestments
 router.delete('/sell', InvestmentController.deleteInvestment);
 
+//GET latest pricing for sale
+router.post('/saleprice', InvestmentController.salePrice)
+
 module.exports = router
