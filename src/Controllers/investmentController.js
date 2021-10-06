@@ -22,6 +22,7 @@ exports.getInvestmentData = (req, res) => {
 }
 
 exports.postInvestment = (req, res, next) => {
+    console.log('date: ', req.body.date)
     const investment = new Investment({
         equity: req.body.symbol,
         lots: req.body.lots,

@@ -10,6 +10,7 @@ exports.getStockSymbol = (req, res, next) => {
     // res.send('Stock Symbol: Success!!!')
     axios.get( AV_API_URL_BASE + 'function=SYMBOL_SEARCH&keywords=' + keyword + '&apikey=' + AV_API_KEY)
         .then(response => {
+            console.log(response.data)
             res.send(response.data)
         })
         .catch(err => {
