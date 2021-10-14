@@ -23,8 +23,11 @@ exports.getInvestmentData = (req, res) => {
 
 exports.postInvestment = (req, res, next) => {
     console.log('date: ', req.body.date)
+
+    let symbolUppercase = req.body.symbol.toUpperCase();
+
     const investment = new Investment({
-        equity: req.body.symbol,
+        equity: symbolUppercase,
         lots: req.body.lots,
         date: req.body.date,
         buyPrice: req.body.value,
