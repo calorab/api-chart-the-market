@@ -1,3 +1,4 @@
+require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../Models/user');
@@ -26,7 +27,7 @@ exports.getUser = (req, res, next) => {
                 email: loadedUser.email,
                 userId: loadedUser._id.toString()
                 },
-                'worththepennyiamwritingthisonjack'
+                process.env.JWT_SECRET
             );
             res.status(200).json({token: token, userId: loadedUser._id.toString()});
         })
@@ -70,7 +71,7 @@ exports.registerUser = (req, res, next) => {
                             email: data.email,
                             userId: data._id
                         },
-                        'worththepennyiamwritingthisonjack'
+                        process.env.JWT_SECRET
                     );
                     res.status(200).json({response: data, token: token, userId: data._id.toString()});
                 })    

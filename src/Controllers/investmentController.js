@@ -22,7 +22,6 @@ exports.getInvestmentData = (req, res) => {
 }
 
 exports.postInvestment = (req, res, next) => {
-    console.log('date: ', req.body.date)
 
     let symbolUppercase = req.body.symbol.toUpperCase();
 
@@ -92,10 +91,8 @@ exports.salePrice = (req, res, next) => {
     let stockSymbol = req.body.symbol
     axios.get(AV_API_URL_BASE + 'function=TIME_SERIES_DAILY_ADJUSTED&symbol=' + stockSymbol + '&apikey=' + AV_API_KEY )
         .then(response => {
-            console.log("salePrice logs1 : ", response.data)
             let mappedData = dataMapping(response.data['Time Series (Daily)'])
             let lastClose = mappedData[mappedData.length-1]
-            // console.log("salePrice logs2 : ", lastClose, mappedData)
             return lastClose;
         }).then(closeData => {
             res.json(closeData);
