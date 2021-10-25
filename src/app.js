@@ -11,6 +11,7 @@ const symbolRoute = require('./Routes/symbolRoute');
 const chartRoute = require('./Routes/chartRoute');
 const investmentRoute = require('./Routes/investmentRoute');
 const userRoute = require('./Routes/userRoute');
+const saleRoute = require('./Routes/saleRoute')
 
 const app =  express();
 
@@ -50,6 +51,7 @@ app.use('/symbol', symbolRoute)
 app.use('/chartdata', chartRoute)
 app.use('/myinvestments', investmentRoute)
 app.use('/user', userRoute)
+app.use('/sale', saleRoute)
 
 app.use(function errorHandler(error, req, res, next) {
   let response

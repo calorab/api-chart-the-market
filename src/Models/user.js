@@ -16,6 +16,12 @@ const userSchema = new Schema(
             type: Schema.Types.ObjectId,
             ref: 'Investment'
             }
+        ],
+        sales: [
+            {
+            type: Schema.Types.ObjectId,
+            ref: 'Sale'
+            }
         ]
     }
 );
