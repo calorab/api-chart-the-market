@@ -1,7 +1,7 @@
 const Sale = require('../Models/sales')
 const User = require('../Models/user')
 
-exports.postInvestment = (req, res, next) => {
+exports.postSale = (req, res, next) => {
 
     let symbolUppercase = req.body.symbol.toUpperCase();
 
@@ -9,8 +9,8 @@ exports.postInvestment = (req, res, next) => {
         equity: symbolUppercase,
         lots: req.body.lots,
         date: req.body.date,
-        buyPrice: req.body.value,
-        sellPrice: req.body.value,
+        buyPrice: req.body.buyPrice,
+        sellPrice: req.body.sellPrice,
         user: req.body.userId,
     });
 
@@ -19,7 +19,6 @@ exports.postInvestment = (req, res, next) => {
         .then(result => {
             return User.findById(req.body.userId)
         }).then(user => {
-            console.log('The User: ', user)
             user.sales.push(sale);
             return user.save();
         })
