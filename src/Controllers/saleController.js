@@ -22,7 +22,7 @@ exports.postSale = (req, res, next) => {
             user.sales.push(sale);
             return user.save();
         })
-        .then(result => {
+        .then(result => { 
             res.status(201).json(result);
         })
         .catch(err => {
@@ -30,4 +30,19 @@ exports.postSale = (req, res, next) => {
             next(err);
         });
 
+}
+// CALEB - test the below
+exports.getSales = () => {
+    console.log('req.body object: ', req.body);
+    const userId = req.body.userId;
+    Sale
+        .find({user: userId})
+        .then(saleData => {
+            console.log('Sales array: ', saleData);
+            res.json(saleData);
+        })
+        .catch(err => {
+            console.log(err);
+            next(err);
+        });
 }
