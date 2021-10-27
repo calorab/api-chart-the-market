@@ -2,6 +2,7 @@ const Sale = require('../Models/sales')
 const User = require('../Models/user')
 
 exports.postSale = (req, res, next) => {
+    console.log('req.body postSales: ', req.body)
 
     let symbolUppercase = req.body.symbol.toUpperCase();
 
@@ -31,10 +32,12 @@ exports.postSale = (req, res, next) => {
         });
 
 }
+
 // CALEB - test the below
-exports.getSales = () => {
-    console.log('req.body object: ', req.body);
+exports.getSales = (req, res, next) => {
+    console.log('req.body object getSales: ', req.body);
     const userId = req.body.userId;
+
     Sale
         .find({user: userId})
         .then(saleData => {
