@@ -41,7 +41,6 @@ exports.getSales = (req, res, next) => {
     Sale
         .find({user: userId})
         .then(saleData => {
-            console.log('Sales array: ', saleData);
             res.json(saleData);
         })
         .catch(err => {

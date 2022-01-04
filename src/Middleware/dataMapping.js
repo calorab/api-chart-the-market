@@ -14,7 +14,7 @@ module.exports = data => {
     })
 
     const dataTable = sortedArray.map((keyValuePair) => {
-        let numPrice = parseFloat(keyValuePair[1]["5. adjusted close"]);
+        let numPrice = parseFloat(keyValuePair[1]["4. close"]);
         return {'date': keyValuePair[0], 'price': numPrice};
     })
     
