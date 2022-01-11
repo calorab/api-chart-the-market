@@ -87,15 +87,11 @@ exports.deleteInvestment = (req, res, next) => {
 }
 
 exports.salePrice = (req, res, next) => {
-    console.log('Inside salePrice endpoint ', req.body.symbol);
     let stockSymbol = req.body.symbol
-    axios.get(AV_API_URL_BASE + 'function=TIME_SERIES_DAILY&symbol=' + stockSymbol + '&apikey=' + AV_API_KEY )
+    axios.get(AV_API_URL_BASE + 'function=GLOBAL_QUOTE&symbol=' + stockSymbol + '&apikey=' + AV_API_KEY )
         .then(response => {
-            let mappedData = dataMapping(response.data['Time Series (Daily)'])
-            let lastClose = mappedData[mappedData.length-1]
-            return lastClose;
-        }).then(closeData => {
-            res.json(closeData);
+            let data = response.data
+            res.json(data);
         })
         .catch(err => {
             console.log('THE ERROR: ', err)
