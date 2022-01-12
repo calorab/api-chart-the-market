@@ -1,5 +1,6 @@
 const Sale = require('../Models/sales')
 const User = require('../Models/user')
+const returnsMapping = require('../Middleware/returnsMapping.js')
 
 exports.postSale = (req, res, next) => {
     console.log('req.body postSales: ', req.body)
@@ -33,7 +34,6 @@ exports.postSale = (req, res, next) => {
 
 }
 
-// CALEB - test the below
 exports.getSales = (req, res, next) => {
     console.log('req.body object getSales: ', req.body);
     const userId = req.body.userId;
@@ -41,7 +41,8 @@ exports.getSales = (req, res, next) => {
     Sale
         .find({user: userId})
         .then(saleData => {
-            res.json(saleData);
+            let chartReturns = returnsMapping(saleData)
+            res.json({saleData, chartReturns});
         })
         .catch(err => {
             console.log(err);

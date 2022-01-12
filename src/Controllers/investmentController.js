@@ -2,7 +2,7 @@ const axios = require('axios');
 const Investment = require('../Models/investment')
 const User = require('../Models/user')
 const {AV_API_KEY, AV_API_URL_BASE} = require('../config');
-const dataMapping = require('../Middleware/dataMapping')
+// const dataMapping = require('../Middleware/dataMapping')
 
 
 exports.getInvestmentData = (req, res) => {
